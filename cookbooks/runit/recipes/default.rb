@@ -34,6 +34,7 @@ when "debian","ubuntu"
       source "runsvdir"
       mode 0644
       notifies :run, resources(:execute => "start-runsvdir")
+      only_if do File.directory?("/etc/event.d") end
     end
     
     file "/etc/inittab" do
